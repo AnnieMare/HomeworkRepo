@@ -13,5 +13,12 @@ namespace Homework7.Controllers
         {
             return View();
         }
+
+        //view to display shop 
+        public ActionResult ViewShop()
+        {
+            return View();
+        }
     }
+   
 }
