@@ -21,16 +21,20 @@
         <br />
         <br />
         <table>
-           <tr>
-               <th>Product</th>
-               <th>Price</th>
-               <th>Quantity available</th>
-           </tr>
             <tr>
-                <td>@Model.Name</td>
-                <td>@Model.Price</td>
-                <td>@Model.QuantityAvailable</td>
+                <th>Product</th>
+                <th>Price</th>
+                <th>Quantity available</th>
             </tr>
+            @foreach ()
+            {
+                <tr>
+                    <td>@Model.Name</td>
+                    <td>@Model.Price</td>
+                    <td>@Model.QuantityAvailable</td>
+                </tr>
+            }
+           
         </table>
     </div>
 </body>
