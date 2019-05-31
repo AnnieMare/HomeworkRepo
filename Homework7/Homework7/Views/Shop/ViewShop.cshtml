@@ -1,4 +1,4 @@
-﻿
+﻿@model Homework7.ViewModels.ShopItemViewModel
 @{
     Layout = null;
 }
@@ -12,8 +12,26 @@
     <title>Immersion Center</title>
 </head>
 <body>
-    <div> 
-
+    <div>
+        <h1>War of the World Immersion Center</h1>
+        <br />
+        <h3>Your one stop shop for all your reenactment needs</h3>
+        <br />
+        <lable>Didn't find what you needed? Add an item here: </lable> <input type="submit" value="+" name="AddItem" style="border-radius:200px" />
+        <br />
+        <br />
+        <table>
+           <tr>
+               <th>Product</th>
+               <th>Price</th>
+               <th>Quantity available</th>
+           </tr>
+            <tr>
+                <td>@Model.Name</td>
+                <td>@Model.Price</td>
+                <td>@Model.QuantityAvailable</td>
+            </tr>
+        </table>
     </div>
 </body>
 </html>

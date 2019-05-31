@@ -6,7 +6,7 @@ background: -webkit-linear-gradient(bottom right, #004000 0%, #808040 100%);
 background: -moz-linear-gradient(bottom right, #004000 0%, #808040 100%);
 background: -o-linear-gradient(bottom right, #004000 0%, #808040 100%);
 background: linear-gradient(to top left, #004000 0%, #808040 100%);
-
+text-align:center;
 /* Non-gradient code. This styles things like the text, box, border, etc */
 color:#000000;
 width:100%;
