@@ -1,4 +1,4 @@
-﻿@model Homework7.ViewModels.ShopItemViewModel
+﻿@model  List<Homework7.ViewModels.ShopItemViewModel>
 @{
     Layout = null;
 }
@@ -14,28 +14,48 @@
 <body>
     <div>
         <h1>War of the World Immersion Center</h1>
-        <br />
-        <h3>Your one stop shop for all your reenactment needs</h3>
-        <br />
-        <lable>Didn't find what you needed? Add an item here: </lable> <input type="submit" value="+" name="AddItem" style="border-radius:200px" />
-        <br />
-        <br />
-        <table>
-            <tr>
-                <th>Product</th>
-                <th>Price</th>
-                <th>Quantity available</th>
-            </tr>
-            @foreach ()
-            {
-                <tr>
-                    <td>@Model.Name</td>
-                    <td>@Model.Price</td>
-                    <td>@Model.QuantityAvailable</td>
-                </tr>
-            }
-           
-        </table>
-    </div>
-</body>
+       
+        <p>Your one stop shop for all your reenactment needs</p>
+        
+        @using (Html.BeginForm("ViewAddItem", "Shop", FormMethod.Post))
+        {
+            <lable>Didn't find what you needed? Add an item here: </lable> <input type="submit" value="+" name="AddItem" style="border-radius:200px" />
+        }
+         
+            <br />
+       
+            <center>
+                <table style="border-color:Black; border-style: solid">
+                    <tr style="border-color:Black; border-style: solid">
+                        <th style="border-color:Black; border-style: solid">Product</th>
+                        <th style="border-color:Black; border-style: solid">Price</th>
+                        <th style="border-color:Black; border-style: solid">Quantity available</th>
+                    </tr>
+                    @if (Model != null)
+                {
+
+                    foreach (var Item in Model)
+                    {
+
+                            <tr style="border-color:Black; border-style: solid">
+                                <td>@Item.Name</td>
+                                <td>@Item.Price</td>
+                                <td>@Item.QuantityAvailable</td>
+                            </tr>
+                        }
+                    }
+                    else
+                    {
+                        <tr style="border-color:Black">
+                            <td> </td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                    }
+
+                </table>
+            </center>
+
+        </div>
+    </body>
 </html>

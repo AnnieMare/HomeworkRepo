@@ -1,0 +1,38 @@
+﻿@model Homework7.ViewModels.ShopItemViewModel
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <link href="~/ShopStyleSheets.css" rel="stylesheet" />
+    <meta name="viewport" content="width=device-width" />
+    <title>ViewAddItem</title>
+</head>
+<body>
+    <div> 
+
+        @using (Html.BeginForm("SaveNewItem", "Shop"))
+        {
+
+            <h1>Add Item</h1>
+            <br />
+            <lable>Item Name</lable><input type="text" name="ItemName" required />
+            <br />
+            <lable>Description</lable><input type="text" name="ItemDescription" required />
+            <br />
+            <lable>Price</lable><input type="text" name="ItemPrice" />
+            <br />
+            <lable>Quantity Available</lable><input type="text" name="QuantityAvailable" required />
+            <br />
+            <br />
+            <input type="submit" name="Save" value="Save" />
+           
+            <input type="reset" name="Cancel" value="Cancel"  />
+
+        }
+    </div>
+</body>
+</html>

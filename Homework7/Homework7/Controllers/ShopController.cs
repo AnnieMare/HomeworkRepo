@@ -14,12 +14,19 @@ namespace Homework7.Controllers
         // GET: Shop
         public ActionResult Index()
         {
-            return View();
+            ShopItemViewModel Item1 = new ShopItemViewModel("Belt", "Leather WW2 Nazi belt", 500, 5);
+            ShopItemViewModel Item2 = new ShopItemViewModel("Tunic", "Officers Tunic ww2", 800, 3);
+            ShopItemViewModel Item3 = new ShopItemViewModel("K98 Rifle", "Rifle with wooden stock", 1500, 7);
+            ShopItemList.Add(Item1);
+            ShopItemList.Add(Item2);
+            ShopItemList.Add(Item3);
+            return RedirectToAction("ViewShop");
         }
 
         //view to display shop 
         public ActionResult ViewShop()
         {
+           
             return View();
         }
 
