@@ -11,13 +11,14 @@ table.steelBlueCols {
   width: 400px;
   text-align: center;
   border-collapse: collapse;
+  font-size:20px;
 }
 table.steelBlueCols td, table.steelBlueCols th {
   border: 1px solid #555555;
   padding: 5px 10px;
 }
 table.steelBlueCols tbody td {
-  font-size: 12px;
+  font-size: 20px;
   font-weight: bold;
   color: #FFFFFF;
 }
@@ -29,7 +30,7 @@ table.steelBlueCols thead {
   border-bottom: 10px solid #555555;
 }
 table.steelBlueCols thead th {
-  font-size: 15px;
+  font-size: 20px;
   font-weight: bold;
   color: #FFFFFF;
   text-align: left;
@@ -40,7 +41,7 @@ table.steelBlueCols thead th:first-child {
 }
 
 table.steelBlueCols tfoot td {
-  font-size: 13px;
+  font-size: 20px;
 }
 table.steelBlueCols tfoot .links {
   text-align: right;

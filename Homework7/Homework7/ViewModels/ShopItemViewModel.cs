@@ -20,10 +20,10 @@ namespace Homework7.ViewModels
         }
         public ShopItemViewModel(string ItemName, string ItemDescription, double ItemPrice, int ItemQuantityAvailable )
         {
-            ItemName = mName;
-            ItemDescription = mDescription;
-            ItemPrice = mPrice;
-            ItemQuantityAvailable = mQuantityAvailable;
+              mName = ItemName;
+              mDescription= ItemDescription;
+              mPrice= ItemPrice;
+              mQuantityAvailable= ItemQuantityAvailable;
             
         }
         //Getters And setters

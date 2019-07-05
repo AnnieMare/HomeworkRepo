@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using System.Collections.Generic;
 
 namespace Homework7.Controllers
 {
@@ -21,7 +22,7 @@ namespace Homework7.Controllers
         public ActionResult ViewShop()
         {
            
-            return View();
+            return View(ShopItemList);
         }
 
         //View Displays item adding page
@@ -31,31 +32,45 @@ namespace Homework7.Controllers
         }
 
         //Add item to ShopViewModel list of items
-        public ActionResult SaveNewItem(string ItemName, string ItemDescription, double ItemPrice, int QuantityAvailable)
+        public ActionResult SaveNewItem(string ItemName, string ItemDescription, string ItemPrice, string QuantityAvailable)
         {
-             ShopItemViewModel NewItem = new ShopItemViewModel(ItemName, ItemDescription, ItemPrice, QuantityAvailable);
-            ShopItemList.Add(NewItem);
+            //check for empty values 
+            if (ItemName != null && ItemDescription != null && ItemPrice != null && QuantityAvailable != null)
+            {
+                //create new item
+                ShopItemViewModel NewItem = new ShopItemViewModel(ItemName, ItemDescription, Convert.ToDouble(ItemPrice), Convert.ToInt32(QuantityAvailable));
+                ShopItemList.Add(NewItem);
+            }
+
+            return RedirectToAction("ViewShop");
+        }
+
+        public ActionResult SortByName()
+        {
+            ShopItemList = ShopItemList.OrderBy(ShopItemList => ShopItemList.Name).ToList();
+            return RedirectToAction("ViewShop");
+        }
+        public ActionResult SortByPrice()
+        {
+            ShopItemList = ShopItemList.OrderBy(ShopItemList => ShopItemList.Price).ToList();
+            return RedirectToAction("ViewShop");
+        }
+        public ActionResult SortByAvail()
+        {
+            ShopItemList = ShopItemList.OrderBy(ShopItemList => ShopItemList.QuantityAvailable).ToList();
+            return RedirectToAction("ViewShop");
+        }
+
+        public ActionResult CountItems()
+        {
+            int NumItems = ShopItemList.Count();
 
 
             return RedirectToAction("ViewShop");
         }
 
-        //public ActionResult SortByName()
-        //{
-
-        //}
-        //public ActionResult SortByPrice()
-        //{
-
-        //}
-        //public ActionResult SortByAvail()
-        //{
-
-        //}
-        //public ActionResult SortByName()
-        //{
-
-        //}
+        ///PART 2
+        //View to display Table 
 
     }
    
