@@ -9,53 +9,90 @@
 <head>
     <link href="~/ShopStyleSheets.css" rel="stylesheet" />
     <meta name="viewport" content="width=device-width" />
-    <title>Immersion Center</title>
+    <title>Doggo Shop</title>
 </head>
 <body>
     <div>
-        <h1>War of the World Immersion Center</h1>
-       
-        <p>Your one stop shop for all your reenactment needs</p>
-        
+        <h1>Doggo Shop</h1>
+
+
+        <input type="submit" value="Click here for part 2" style="float:right">
         @using (Html.BeginForm("ViewAddItem", "Shop", FormMethod.Post))
         {
-            <lable>Didn't find what you needed? Add an item here: </lable> <input type="submit" value="+" name="AddItem" style="border-radius:200px" />
+            <lable>Add item </lable> <input type="submit" value="+" name="AddItem" style="border-radius:200px" />
         }
-         
-            <br />
-       
-            <center>
-                <table style="border-color:Black; border-style: solid">
-                    <tr style="border-color:Black; border-style: solid">
-                        <th style="border-color:Black; border-style: solid">Product</th>
-                        <th style="border-color:Black; border-style: solid">Price</th>
-                        <th style="border-color:Black; border-style: solid">Quantity available</th>
-                    </tr>
-                    @if (Model != null)
+
+        <br />
+
+        <center>
+            <table border-style solid; font-size:large" class="steelBlueCols">
+                <tr style="border-color:white; border-style: solid">
+                    <th style="border-right-color:white; border-style: solid">Product</th>
+                    <th style="border-right-color:white; border-style: solid">Price</th>
+                    <th style="border-right-color:white; border-style: solid">Quantity available</th>
+                </tr>
+                @if (Model != null)
                 {
 
                     foreach (var Item in Model)
                     {
 
-                            <tr style="border-color:Black; border-style: solid">
-                                <td>@Item.Name</td>
-                                <td>@Item.Price</td>
-                                <td>@Item.QuantityAvailable</td>
-                            </tr>
-                        }
-                    }
-                    else
-                    {
-                        <tr style="border-color:Black">
-                            <td> </td>
-                            <td></td>
-                            <td></td>
+                        <tr style="border-color:white; border-style: solid">
+                            <td style="border-right-color:white; border-style: solid">@Item.Name</td>
+                            <td style="border-right-color:white; border-style: solid">@Item.Price</td>
+                            <td style="border-right-color:white; border-style: solid">@Item.QuantityAvailable</td>
                         </tr>
                     }
+                }
+                else
+                {
+                    <tr style="border-color:white; border-style: solid">
+                        <td style="border-right-color:white; border-style: solid"> </td>
+                        <td style="border-right-color:white; border-style: solid"></td>
+                        <td></td>
+                    </tr>
+                }
 
-                </table>
-            </center>
+            </table>
+        </center>
+        <br />
+        <br />
+        <center>
+            <table>
+                <tr>
+                    @using (Html.BeginForm("SortByName", "Shop", FormMethod.Post))
+            {
+                        <td style="float:left"><input id="SortByName" type="submit" value="Sort by Name" /></td>
 
-        </div>
-    </body>
+
+                    }
+                </tr>
+                <tr>
+                    @using (Html.BeginForm("SortByPrice", "Shop", FormMethod.Post))
+                    {
+                        <td style="float:left"><input id="SortByPrice" type="submit" value="Sort By Price" /></td>
+
+                    }
+                </tr>
+                <tr>
+                    @using (Html.BeginForm("SortByAvail", "Shop", FormMethod.Post))
+            {
+                        <td style="float:left"><input id="SortByAvail" type="submit" value="Sort By Quantity Available" /></td>
+
+                    }
+                </tr>
+                <tr>
+                    @using (Html.BeginForm("NumOfItemsInList", "Shop", FormMethod.Post))
+            {
+                        <td style="float:left"><input id="NumOfItemsInList" type="submit" value="How Many Items Are In The List?" /></td>
+
+                    }
+                </tr>
+
+            </table>
+        </center>
+        <center><a href="@Url.Action("ShopItems", "Shop")"></a></center>
+    </div>
+</body>
+
 </html>
