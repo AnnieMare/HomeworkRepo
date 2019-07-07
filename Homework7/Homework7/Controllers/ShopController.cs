@@ -5,11 +5,13 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using System.Collections.Generic;
+using System.Data.SqlClient;
 
 namespace Homework7.Controllers
 {
     public class ShopController : Controller
     {
+        private SqlConnection myConnection = new SqlConnection(Global.ConnectionString);
         public static List<ShopItemViewModel> ShopItemList = new List<ShopItemViewModel>();
 
         // GET: Shop
@@ -71,7 +73,39 @@ namespace Homework7.Controllers
 
         ///PART 2
         //View to display Table 
+       
+        public ActionResult ViewPart2()
+        {
+            return View();
+        }
 
+        //do insert
+        public ActionResult DoInsert(string ItemName, string ItemDescription, string ItemPrice, string QuantityAvailable)
+        {
+            try
+            {
+                SqlCommand Insert = new SqlCommand("Insert into ShopItem VALUES('" + ItemName + "' , '" + ItemDescription + "', '" + Convert.ToDouble(ItemPrice) + "', '" + Convert.ToInt32(QuantityAvailable)+ "')", myConnection);     
+                myConnection.Open();
+                ViewBag.Message = "Succes: " +Insert.ExecuteNonQuery()+ " number or rows added.";
+                myConnection.Close();
+
+                //create new item
+                ShopItemViewModel NewItem = new ShopItemViewModel(ItemName, ItemDescription, Convert.ToDouble(ItemPrice), Convert.ToInt32(QuantityAvailable));
+                ShopItemList.Add(NewItem);
+
+
+            }
+            catch (Exception err)
+            {
+                ViewBag.Message = err.Message;
+                myConnection.Close();
+            }
+           
+
+            return RedirectToAction("ViewShop");
+        }
+
+      
     }
    
 }
